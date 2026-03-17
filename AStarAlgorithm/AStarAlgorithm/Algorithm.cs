@@ -9,19 +9,18 @@ namespace AStarAlgorithm
     internal class Algorithm
     {
         private Grid grid;
-        private Node start;
-        private Node target;
 
-        public Algorithm(Grid grid, Node start, Node target)
+        public Algorithm(Grid grid)
         {
             this.grid = grid;
-            this.start = start;
-            this.target = target;
         }
 
-        public Path Run()
+        public Path FindPath(Node start, Node end)
         {
             Path path = new Path();
+            List<Node> openNodes = new List<Node>();
+            List<Node> closeNodes = new List<Node>();
+
             return path;
         }
     }

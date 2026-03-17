@@ -23,8 +23,8 @@ namespace AStarAlgorithm
             Node startNode = new Node(start[0], start[1], 'S');
             Node targetNode = new Node(target[0], target[1], 'T');
 
-            Algorithm algorithm = new Algorithm(grid, startNode, targetNode);
-            algorithm.Run();
+            Algorithm algorithm = new Algorithm(grid);
+            algorithm.FindPath(startNode, targetNode);
         }
     }
 }

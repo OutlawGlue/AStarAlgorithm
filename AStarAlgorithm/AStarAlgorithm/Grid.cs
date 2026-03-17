@@ -8,16 +8,67 @@ namespace AStarAlgorithm
 {
     internal class Grid
     {
-        private char[,] grid;
+        private Node[,] grid;
+        private int rows;
+        private int cols;
 
-        public Grid(int width, int height)
+        public Grid(int rows, int cols)
         {
-            grid = new char[width, height];
+            this.rows = rows;
+            this.cols = cols;
+            SetUpGrid();
         }
 
-        public char GetCell(int row, int col)
+        private void SetUpGrid()
+        {
+            //Don't need to worry about rows -1 here
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    Node temp = new Node(row, col, '.');
+                    grid[row, col] = temp;
+                }
+            }
+        }
+
+        public Node GetCell(int row, int col)
         {
             return grid[row, col];
+        }
+
+        public List<Node> GetNeighbours(int row, int col)
+        {
+            //Validate:
+            if (row < 0 || row >= rows || col < 0 || col >= cols)
+            {
+                return null;
+            }
+
+            List<Node> neighbours = new List<Node>();
+
+            //Top:
+            if (row > 0)
+            {
+                neighbours.Add(grid[row - 1, col]);
+            }
+            //Bottom:
+            if (row < rows - 1)
+            {
+                neighbours.Add(grid[row + 1, col]);
+            }
+            //Left:
+            if (col > 0)
+            {
+                neighbours.Add(grid[row, col - 1]);
+            }
+            //Right:
+            if (col < cols - 1)
+            {
+                neighbours.Add(grid[row, col + 1]);
+            }
+
+            return neighbours;
         }
     }
 }
