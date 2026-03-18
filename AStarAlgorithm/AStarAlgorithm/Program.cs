@@ -18,9 +18,9 @@ namespace AStarAlgorithm
                 //Get basic inputs:
                 Console.Write("Enter grid size (rows, cols): ");
                 gridSize = Console.ReadLine().Split(',').Select(int.Parse).ToArray();
-                Console.Write("Enter starting location (row, col):");
+                Console.Write("Enter starting location (row, col): ");
                 start = Console.ReadLine().Split(',').Select(int.Parse).ToArray();
-                Console.Write("Enter target location (row, col):");
+                Console.Write("Enter target location (row, col): ");
                 target = Console.ReadLine().Split(',').Select(int.Parse).ToArray();
 
                 //Validate inputs:
