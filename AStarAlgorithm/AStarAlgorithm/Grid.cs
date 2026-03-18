@@ -37,8 +37,11 @@ namespace AStarAlgorithm
             return grid[row, col];
         }
 
-        public List<Node> GetNeighbours(int row, int col)
+        public List<Node> GetNeighbours(Node current)
         {
+            int row = current.Row;
+            int col = current.Col;
+
             //Validate:
             if (row < 0 || row >= rows || col < 0 || col >= cols)
             {

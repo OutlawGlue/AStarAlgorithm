@@ -27,6 +27,29 @@ namespace AStarAlgorithm
             {
                 Node current = openNodes[0];
 
+                foreach (Node node in openNodes)
+                {
+                    if (node.FCost < current.FCost || (node.FCost == current.FCost && node.HCost < current.HCost))
+                    {
+                        current = node;
+                    }
+                }
+
+                if (current == end)
+                {
+                    return path;
+                }
+
+                foreach (Node neighbour in grid.GetNeighbours(current))
+                {
+                    if (closedNodes.Contains(neighbour) || !neighbour.CanAccess)
+                    {
+                        continue;
+                    }
+                }
+
+                int cost = current.GCost + 1;
+
                 openNodes.Remove(current);
                 closedNodes.Add(current);
             }

@@ -11,6 +11,7 @@ namespace AStarAlgorithm
         private readonly int row;
         private readonly int col;
         private char value;
+        private bool canAccess; //indicates if the node is walkable (not a wall)
         private Node parent; //reference to the parent node for path reconstruction
 
         private int gCost = 0; //current cost from start to this node
@@ -22,6 +23,21 @@ namespace AStarAlgorithm
             this.row = row;
             this.col = col;
             this.value = value;
+        }
+
+        public int Row
+        {
+            get { return row; }
+        }
+
+        public int Col
+        {
+            get { return col; }
+        }
+
+        public bool CanAccess
+        {
+            get { return canAccess; }
         }
 
         public int GCost
