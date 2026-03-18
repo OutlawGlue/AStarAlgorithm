@@ -9,8 +9,8 @@ namespace AStarAlgorithm
     internal class Grid
     {
         private Node[,] grid;
-        private int rows;
-        private int cols;
+        private readonly int rows;
+        private readonly int cols;
 
         public Grid(int rows, int cols)
         {

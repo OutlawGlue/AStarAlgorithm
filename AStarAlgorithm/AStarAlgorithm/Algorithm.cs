@@ -23,6 +23,14 @@ namespace AStarAlgorithm
 
             openNodes.Add(start);
 
+            while (openNodes.Count > 0)
+            {
+                Node current = openNodes[0];
+
+                openNodes.Remove(current);
+                closedNodes.Add(current);
+            }
+
             return path;
         }
     }
