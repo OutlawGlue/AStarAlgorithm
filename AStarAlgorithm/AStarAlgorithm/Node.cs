@@ -10,7 +10,7 @@ namespace AStarAlgorithm
     {
         private readonly int row;
         private readonly int col;
-        private bool canAccess; //indicates if the node is walkable (not a wall)
+        private readonly bool canAccess; //indicates if the node is walkable (not a wall)
         private Node parent; //reference to the parent node for path reconstruction
 
         private int gCost = int.MaxValue; //current cost from start to this node

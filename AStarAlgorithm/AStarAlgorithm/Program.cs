@@ -8,7 +8,7 @@ namespace AStarAlgorithm
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             //Get basic inputs:
             Console.Write("Enter grid size (rows, cols): ");

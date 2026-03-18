@@ -8,7 +8,7 @@ namespace AStarAlgorithm
 {
     internal class Path
     {
-        private List<Node> nodes;
+        private readonly List<Node> nodes;
 
         public Path(List<Node> nodes)
         {

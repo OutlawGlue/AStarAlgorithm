@@ -8,7 +8,7 @@ namespace AStarAlgorithm
 {
     internal class Algorithm
     {
-        private Grid grid;
+        private readonly Grid grid;
 
         public Algorithm(Grid grid)
         {
