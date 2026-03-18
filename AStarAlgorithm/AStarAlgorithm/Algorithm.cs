@@ -19,7 +19,9 @@ namespace AStarAlgorithm
         {
             Path path = new Path();
             List<Node> openNodes = new List<Node>();
-            List<Node> closeNodes = new List<Node>();
+            List<Node> closedNodes = new List<Node>();
+
+            openNodes.Add(start);
 
             return path;
         }
