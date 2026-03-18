@@ -16,6 +16,7 @@ namespace AStarAlgorithm
         {
             this.rows = rows;
             this.cols = cols;
+            this.grid = new Node[rows, cols];
             SetUpGrid();
         }
 
@@ -26,7 +27,7 @@ namespace AStarAlgorithm
             {
                 for (int col = 0; col < cols; col++)
                 {
-                    Node temp = new Node(row, col, '.');
+                    Node temp = new Node(row, col);
                     grid[row, col] = temp;
                 }
             }
@@ -45,7 +46,7 @@ namespace AStarAlgorithm
             //Validate:
             if (row < 0 || row >= rows || col < 0 || col >= cols)
             {
-                return null;
+                return new List<Node>();
             }
 
             List<Node> neighbours = new List<Node>();
@@ -72,6 +73,12 @@ namespace AStarAlgorithm
             }
 
             return neighbours;
+        }
+
+        public IEnumerable<Node> GetAllNodes()
+        {
+            foreach (var node in grid)
+                yield return node;
         }
     }
 }

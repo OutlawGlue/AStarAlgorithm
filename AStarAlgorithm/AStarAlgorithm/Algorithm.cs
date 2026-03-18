@@ -17,7 +17,14 @@ namespace AStarAlgorithm
 
         public Path FindPath(Node start, Node end)
         {
-            Path path = new Path();
+            //Reset all nodes:
+            foreach (Node node in grid.GetAllNodes())
+            {
+                node.GCost = int.MaxValue;
+                node.HCost = 0;
+                node.Parent = null;
+            }
+
             List<Node> openNodes = new List<Node>();
             List<Node> closedNodes = new List<Node>();
 
@@ -35,9 +42,12 @@ namespace AStarAlgorithm
                     }
                 }
 
+                openNodes.Remove(current);
+                closedNodes.Add(current);
+
                 if (current == end)
                 {
-                    return path;
+                    return RetracePath(start, end);
                 }
 
                 foreach (Node neighbour in grid.GetNeighbours(current))
@@ -46,15 +56,47 @@ namespace AStarAlgorithm
                     {
                         continue;
                     }
+
+                    int cost = current.GCost + 1;
+
+                    if (cost < neighbour.GCost || !openNodes.Contains(neighbour))
+                    {
+                        neighbour.GCost = cost;
+                        neighbour.HCost = CalcHeuristic(neighbour, end);
+                        neighbour.Parent = current;
+
+                        if (!openNodes.Contains(neighbour))
+                        {
+                            openNodes.Add(neighbour);
+                        }
+                    }
                 }
+            }
+            return null; //if issue with path, return null
+        }
 
-                int cost = current.GCost + 1;
+        private int CalcHeuristic(Node start, Node end)
+        {
+            return Math.Abs(start.Row - end.Row) + Math.Abs(start.Col - end.Col);
+        }
 
-                openNodes.Remove(current);
-                closedNodes.Add(current);
+        private Path RetracePath(Node start, Node end)
+        {
+            List<Node> nodes = new List<Node>();
+            Node current = end;
+
+            while (current != start)
+            {
+                if (current == null)
+                    return null;
+
+                nodes.Add(current);
+                current = current.Parent;
             }
 
-            return path;
+            nodes.Reverse();
+
+            return new Path(nodes);
         }
     }
 }

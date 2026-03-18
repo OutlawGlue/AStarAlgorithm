@@ -8,5 +8,16 @@ namespace AStarAlgorithm
 {
     internal class Path
     {
+        private List<Node> nodes;
+
+        public Path(List<Node> nodes)
+        {
+            this.nodes = nodes;
+        }
+
+        public List<Node> Nodes
+        {
+            get { return nodes; }
+        }
     }
 }
